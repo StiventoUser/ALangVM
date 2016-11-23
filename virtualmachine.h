@@ -23,9 +23,9 @@ enum GenCodes : int32_t
     Meta, Print/*temporary*/
 };
 
-enum TypeIndex : byte
+enum TypesIndex : byte
 {
-    Int8, Int16, Int32, Int64
+    Int64, Int32, Int16, Int8, Double, Single, String, Bool
 };
 
 class VirtualMachine

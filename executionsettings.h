@@ -8,7 +8,7 @@ class ExecutionSettings
 public:
     const int32_t DefaultStackSize = 1024*1024;
 public:
-    ExecutionSettings* instance()
+    static ExecutionSettings* instance()
     {
         if(m_settings == nullptr)
             m_settings = new ExecutionSettings();
