@@ -234,6 +234,8 @@ void VirtualMachine::execute()
             }
 
             memcpy(m_stack, m_program, byteCount);
+
+            m_program += byteCount;
         }
             break;
         case GenCodes::Pop:
