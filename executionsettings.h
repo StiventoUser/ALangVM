@@ -38,7 +38,7 @@ private:
     static ExecutionSettings* m_settings;
 
     bool m_isLocked;
-    int32_t m_stackSize;
+    int32_t m_stackSize = DefaultStackSize;
 };
 
 #endif // EXECUTIONSETTINGS_H

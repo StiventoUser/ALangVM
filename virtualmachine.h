@@ -5,6 +5,9 @@
 
 #include "platforminfo.h"
 
+//Comment to disable logging
+#define DEBUG_VM
+
 using byte = char;
 
 #ifdef ENVIRONMENT64
@@ -20,13 +23,18 @@ enum GenCodes : int32_t
     Add, Subtract, Multiply, Divide, Exponent, Negate,
     Func,
     CallFunc, FuncEnd, FuncReturn,
-    Meta, Print/*temporary*/
+    Meta, Print/*temporary*/,
+
+    GenCodesCount/*To debug boundaries of enumeration*/
 };
 
 enum TypesIndex : byte
 {
-    Int64, Int32, Int16, Int8, Double, Single, String, Bool
+    Int64, Int32, Int16, Int8, Double, Single, String, Bool,
+
+    TypesIndexCount/*To debug boundaries of enumeration*/
 };
+
 
 class VirtualMachine
 {
