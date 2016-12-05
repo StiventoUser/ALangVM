@@ -6,7 +6,7 @@
 #include "platforminfo.h"
 
 //Comment to disable logging
-#define DEBUG_VM
+//#define DEBUG_VM
 
 using byte = char;
 
@@ -24,6 +24,7 @@ enum GenCodes : int32_t
     Func,
     CallFunc, FuncEnd, FuncReturn,
     Meta, Print/*temporary*/,
+    Exit, Abort,
 
     GenCodesCount/*To debug boundaries of enumeration*/
 };

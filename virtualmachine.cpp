@@ -17,7 +17,8 @@ const char* const GenCodesName[] =
     "Add", "Subtract", "Multiply", "Divide", "Exponent", "Negate",
     "Func",
     "CallFunc", "FuncEnd", "FuncReturn",
-    "Meta", "Print"
+    "Meta", "Print",
+    "Exit", "Abort"
 };
 const char* const TypesIndexName[] =
 {
@@ -505,10 +506,7 @@ void VirtualMachine::execute()
             byte type = *m_program;
 
             m_program += sizeof(byte);
-#ifdef DEBUG_VM
-            auto typeName = getTypeIndexName((TypesIndex)type, ok);
-            cout << "Type: " << (ok ? typeName : "Unknown") << endl;
-#endif
+
             switch(type)
             {
             case TypesIndex::Int32:
@@ -546,11 +544,6 @@ void VirtualMachine::execute()
 
             m_program += sizeof(byte);
 
-#ifdef DEBUG_VM
-            auto typeName = getTypeIndexName((TypesIndex)type, ok);
-            cout << "Type: " << (ok ? typeName : "Unknown") << endl;
-#endif
-
             switch(type)
             {
             case TypesIndex::Int32:
@@ -585,11 +578,6 @@ void VirtualMachine::execute()
 
             m_program += sizeof(byte);
 
-#ifdef DEBUG_VM
-            auto typeName = getTypeIndexName((TypesIndex)type, ok);
-            cout << "Type: " << (ok ? typeName : "Unknown") << endl;
-#endif
-
             switch(type)
             {
             case TypesIndex::Int32:
@@ -620,11 +608,6 @@ void VirtualMachine::execute()
             byte type = *m_program;
 
             m_program += sizeof(byte);
-
-#ifdef DEBUG_VM
-            auto typeName = getTypeIndexName((TypesIndex)type, ok);
-            cout << "Type: " << (ok ? typeName : "Unknown") << endl;
-#endif
 
             switch(type)
             {
@@ -657,11 +640,6 @@ void VirtualMachine::execute()
 
             m_program += sizeof(byte);
 
-#ifdef DEBUG_VM
-            auto typeName = getTypeIndexName((TypesIndex)type, ok);
-            cout << "Type: " << (ok ? typeName : "Unknown") << endl;
-#endif
-
             switch(type)
             {
             case TypesIndex::Int32:
@@ -693,10 +671,7 @@ void VirtualMachine::execute()
 
             m_program += sizeof(byte);
 
-#ifdef DEBUG_VM
-            auto typeName = getTypeIndexName((TypesIndex)type, ok);
-            cout << "Type: " << (ok ? typeName : "Unknown") << endl;
-#endif
+
 
             switch(type)
             {
@@ -722,6 +697,15 @@ void VirtualMachine::execute()
             cout << endl;
 #endif
         }
+            break;
+        case GenCodes::Exit:
+            //Do cleanup?
+            return;
+            break;
+        case GenCodes::Abort:
+            cout << "Aborting...";
+            //Log error?
+            return;
             break;
         case GenCodesCount://For compiler
             break;
